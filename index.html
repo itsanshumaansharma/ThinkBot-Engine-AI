@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ThinkBot Engine AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <button class="new-chat-btn"><i class="fas fa-plus"></i> New Chat</button>
+            </header>
+            <nav class="chat-history">
+                <!-- Previous chats will appear here -->
+            </nav>
+            <footer class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">U</div>
+                    <span class="username">User</span>
+                </div>
+            </footer>
+        </aside>
+
+        <!-- Chat Section -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <h1>ThinkBot Engine AI</h1>
+            </header>
+
+            <section class="chat-messages" id="chat-messages">
+                <div class="welcome-message">
+                    <h2>How can I assist you today?</h2>
+                    <p>Ask me anything—from creative writing to coding help and more.</p>
+                </div>
+            </section>
+
+            <footer class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea id="user-input" placeholder="Message ThinkBot..." rows="1"></textarea>
+                    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <p class="disclaimer">ThinkBot may generate responses that aren’t always accurate. Please verify the information.</p>
+                <p class="disclaimer">&copy 2025 | Anshumaan Sharma | All Rights Reserved.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -192,25 +192,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatMessageText(text) {
-        // First handle code blocks
-        let formattedText = text.replace(/```(\w*)\n([\s\S]*?)```/g,
-            '<pre><code class="$1">$2</code></pre>');
+    // Replace code blocks first
+    let formattedText = text.replace(/```(\w*)\n([\s\S]*?)```/g,
+        '<pre><code class="$1">$2</code></pre>');
 
-        // Then handle inline code
-        formattedText = formattedText.replace(/`([^`]+)`/g, '<code>$1</code>');
+    // Replace inline code
+    formattedText = formattedText.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-        // Handle markdown links
-        formattedText = formattedText.replace(/\[([^\]]+)\]\(([^)]+)\)/g,
-            '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    // Replace markdown links
+    formattedText = formattedText.replace(/\[([^\]]+)\]\(([^)]+)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
 
-        // Handle line breaks and basic formatting
-        formattedText = formattedText
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/\n/g, '<br>');
+    // Replace bold
+    formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-        return formattedText;
-    }
+    // Replace italic (single * or _)
+    formattedText = formattedText.replace(/(^|[^*])\*(?!\s)([^*]+?)\*(?!\*)/g, '$1<em>$2</em>');
+
+    // Replace bullet point * with • (only at line starts)
+    formattedText = formattedText.replace(/(^|\n)\s*\*\s+/g, '$1• ');
+
+    // Replace newlines with <br>
+    formattedText = formattedText.replace(/\n/g, '<br>');
+
+    return formattedText;
+}
 
     function showTypingIndicator() {
         const typingDiv = document.createElement('div');
